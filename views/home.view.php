@@ -1,15 +1,7 @@
-<?php require basePath('views/partials/head.php') ?>
-
-<!-- Nav -->
-<?php require basePath('views/partials/navbar.php') ?>
-
-<!-- Showcase -->
-<?php require basePath('views/partials/showcase-search.php') ?>
-
-
-
-<!-- Top Banner -->
-<?php require basePath('views/partials/top-banner.php') ?>
+<?= loadPartial('head') ?>
+<?= loadPartial('navbar') ?>
+<?= loadPartial('showcase-search') ?>
+<?= loadPartial('top-banner') ?>
 
 
 <!-- Job Listings -->
@@ -172,9 +164,5 @@
     </a>
 </section>
 
-<!-- Bottom Banner -->
-<?php require basePath('views/partials/bottom-banner.php') ?>
-
-
-<!-- footer -->
-<?php require basePath('views/partials/footer.php') ?>
+<?= loadPartial('bottom-banner') ?>
+<?= loadPartial('footer') ?>

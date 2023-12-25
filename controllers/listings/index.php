@@ -1,1 +1,1 @@
-<?php echo "listings"; ?>
+<?php loadView('/listings/index') ?>

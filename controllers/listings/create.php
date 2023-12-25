@@ -1,1 +1,1 @@
-<?php echo "create listing" ?>
+<?php loadView('listings/create') ?>

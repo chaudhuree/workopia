@@ -1,16 +1,14 @@
 <?php
 require '../helper.php';
-// require basePath('views/home.view.php');
-// loadView('home');
 
-// $routes = [
-//   '/' => 'controllers/home.php',
-//   '/listings' => 'controllers/listings/index.php',
-//   '/listings/create' => 'controllers/listings/create.php',
-//   '404' => 'controllers/error/404.php',
-// ];
+
+require basePath('Router.php');
+
+$router = new Router();
+
+$routes = require basePath('routes.php');
 
 $uri = $_SERVER['REQUEST_URI'];
-// echo "path ".$uri;
+$method = $_SERVER['REQUEST_METHOD'];
 
-require basePath('router.php');
+$router->route($uri, $method);

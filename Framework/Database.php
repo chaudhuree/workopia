@@ -1,4 +1,6 @@
 <?php
+namespace Framework;
+use PDO;
 
 class Database
 {

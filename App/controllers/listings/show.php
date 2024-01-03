@@ -1,3 +1,4 @@
+<!-- not used code just for reference -->
 <?php
 
 use Framework\Database;

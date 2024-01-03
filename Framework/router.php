@@ -11,16 +11,20 @@ class Router
    *
    * @param string $method
    * @param string $uri
-   * @param string $controller
+   * @param string $action
    * @return void
    */
 
-  public function registerRoute($method, $uri, $controller)
+   // action is like HomeController@index
+   // so after explode, $controller = HomeController and $controllerMethod = index
+  public function registerRoute($method, $uri, $action)
   {
+    list($controller, $controllerMethod) = explode('@', $action);
     $this->routes[] = [
       'method' => $method,
       'uri' => $uri,
-      'controller' => $controller
+      'controller' => $controller,
+      'controllerMethod' => $controllerMethod
     ];
   }
 
@@ -92,11 +96,23 @@ class Router
    * @param string $method
    * @return void
    */
+  // explanation is for HomeController@index
   public function route($uri, $method)
   {
     foreach ($this->routes as $route) {
       if ($route['uri'] === $uri && $route['method'] === $method) {
-        require basePath('App/' . $route['controller']);
+        $controller = 'App\\Controllers\\' . $route['controller']; 
+        // \\ is an escape character, so it's like App\Controllers\HomeController
+
+        // $controller = App\Controllers\HomeController;
+        $controllerMethod = $route['controllerMethod'];
+        // $controllerMethod = index;
+
+        // Instatiate the controller and call the method
+        $controllerInstance = new $controller(); 
+        // new App\Controllers\HomeController();
+        $controllerInstance->$controllerMethod();
+        // $controllerInstance->index();
         return;
       }
     }

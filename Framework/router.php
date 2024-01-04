@@ -1,6 +1,9 @@
 <?php
-
 namespace Framework;
+// use App\Controllers\ErrorController;
+
+
+// use App\Controllers\ErrorController;
 
 class Router
 {
@@ -82,12 +85,12 @@ class Router
    *  
    * @return void
    */
-  public function error($httpCode = 404)
-  {
-    http_response_code($httpCode);
-    loadView("error/{$httpCode}");
-    exit;
-  }
+  // public function error($httpCode = 404)
+  // {
+  //   http_response_code($httpCode);
+  //   loadView("error/{$httpCode}");
+  //   exit;
+  // }
 
   /**
    * Route the request
@@ -116,7 +119,7 @@ class Router
         return;
       }
     }
-
-    $this->error();
+    \App\Controllers\ErrorController::notFound();
+    // $this->error();
   }
 }
